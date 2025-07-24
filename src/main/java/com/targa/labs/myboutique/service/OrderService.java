@@ -39,12 +39,17 @@ public class OrderService {
                     .map(OrderItemService::mapToDto)
                     .collect(Collectors.toSet());
 
+            Long paymentId = null;
+            if (order.getPayment() != null) {
+                paymentId = order.getPayment().getId();
+            }
+
             return new OrderDto(
                     order.getId(),
                     order.getTotalPrice(),
                     order.getStatus().name(),
                     order.getShipped(),
-                    order.getPayment().getId(),
+                    paymentId,
                     AddressService.mapToDto(order.getShipmentAddress()),
                     orderItems
             );
