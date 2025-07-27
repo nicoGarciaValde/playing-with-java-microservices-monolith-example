@@ -17,3 +17,10 @@ docker run -d --name demo-postgres \
         -e POSTGRES_DB=demo \
         -p 5432:5432 postgres:latest
 ```
+
+## Running with Docker Compose
+You can start both PostgreSQL and the application using Docker Compose:
+```bash
+docker compose up --build
+```
+The application will be available on [http://localhost:8080](http://localhost:8080).
